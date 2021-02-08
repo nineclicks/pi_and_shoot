@@ -1,9 +1,9 @@
-import subprocess
 from io import BytesIO
 import picamera
 import threading
 from PIL import Image, ImageDraw
 from time import sleep
+from display import show
 
 
 class Preview:
@@ -47,11 +47,7 @@ class Preview:
                 self.camera.resolution = (480, 320)
                 self.camera.capture(stream, format='png')
                 stream.truncate()
-                stream.seek(0)
-                with open('/dev/shm/tmp.png', 'wb') as f:
-                    f.write(stream.getbuffer())
-
-                subprocess.run(show_cmd.split(' '))
+                show(stream)
             else:
                 self.camera.resolution = self.resolution
                 self.camera.capture(stream, format='jpeg')
@@ -63,8 +59,7 @@ class Preview:
                 image = image.resize((480,320), Image.NEAREST)
                 draw = ImageDraw.Draw(image)
                 draw.rectangle((0,0,image.size[0]-1, image.size[1]-1), outline=(255,255,255))
-                image.save('/dev/shm/tmp.png', format='png')
-                subprocess.run(show_cmd.split(' '))
+                show(image)
                 sleep(self.review_time)
 
     
@@ -76,6 +71,7 @@ class Preview:
 
     def stop(self):
         self.running = False
+        self.camera_preview_thread.join()
 
     def snap(self, path):
         try:

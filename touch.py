@@ -54,7 +54,7 @@ def screen_press(x, y):
 
     try:
         px_x = int(width * (x - minx) / (maxx - minx))
-        px_y = int( height * (y - miny) / (maxy - miny))
+        px_y = height - 1 - int( height * (y - miny) / (maxy - miny))
 
         touch_fn(px_x, px_y)
     except:
