@@ -1,0 +1,16 @@
+Parts:
+  Raspberry Pi 4, any mem size with SD card
+  Official Raspberry Pi Camera V2 with short cable
+  3.5" Raspberry Pi Touch Screen
+  4 M3x6 or approx. similar length bolts
+  4 screws for mounting the Pi, honestly not sure of the size. They came from another case.
+  4 brass threaded inserts M3 X D4.6 X L5.0
+  1 1/4 inches-20 x 6mm L x 8mm OD Female Thread Brass Embedment Nuts
+  2 16mm Waterproof Momentary Stainless Steel Metal Push Button Switches
+  Female dupont cables for Rpi header. With plastic sheaths removed.
+  External power source for the Pi
+
+Tools:
+  3d printer
+  Hex key and/or screwdriver for screws and bolts
+  Soldering iron for brass inserts
